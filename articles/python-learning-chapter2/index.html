@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"woom877.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Function. Definitions, Nested Definitions, Currying, Function Decorators">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Learning Chapter 2">
+<meta property="og:url" content="https://woom877.github.io/articles/python-learning-chapter2/index.html">
+<meta property="og:site_name" content="WOOM">
+<meta property="og:description" content="Function. Definitions, Nested Definitions, Currying, Function Decorators">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-10T14:54:51.000Z">
+<meta property="article:modified_time" content="2024-12-13T09:22:11.224Z">
+<meta property="article:author" content="woom">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://woom877.github.io/articles/python-learning-chapter2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://woom877.github.io/articles/python-learning-chapter2/","path":"articles/python-learning-chapter2/","title":"Python Learning Chapter 2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python Learning Chapter 2 | WOOM</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">WOOM</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Be happy please</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Functions"><span class="nav-number">1.</span> <span class="nav-text">Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Definitions"><span class="nav-number">1.1.</span> <span class="nav-text">Definitions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions-as-Arguments"><span class="nav-number">1.2.</span> <span class="nav-text">Functions as Arguments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nested-Definitions"><span class="nav-number">1.3.</span> <span class="nav-text">Nested Definitions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Functions-as-Returned-Values"><span class="nav-number">1.4.</span> <span class="nav-text">Functions as Returned Values</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Currying"><span class="nav-number">1.5.</span> <span class="nav-text">Currying</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lambda-Expressions"><span class="nav-number">1.6.</span> <span class="nav-text">Lambda Expressions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-Decorators"><span class="nav-number">1.7.</span> <span class="nav-text">Function Decorators</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">woom</p>
+  <div class="site-description" itemprop="description">Just for fun</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/woom877" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;woom877" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://woom877.github.io/articles/python-learning-chapter2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="woom">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WOOM">
+      <meta itemprop="description" content="Just for fun">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Python Learning Chapter 2 | WOOM">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python Learning Chapter 2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-07-10 22:54:51" itemprop="dateCreated datePublished" datetime="2024-07-10T22:54:51+08:00">2024-07-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-12-13 17:22:11" itemprop="dateModified" datetime="2024-12-13T17:22:11+08:00">2024-12-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Learning/" itemprop="url" rel="index"><span itemprop="name">Learning</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h1><h2 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h2><p>一个<strong>函数</strong>的<strong>定义</strong>通常如下:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> &lt;name&gt;(&lt;formal parameters&gt;):</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> ...</span><br></pre></td></tr></table></figure>
+
+<p>开头为一个 <code>def</code> 语句, 然后是函数的名, 后面跟着 <code>()</code>, <code>()</code> 里是若干个用 <code>,</code> 隔开的形参. 下面是函数要进行的操作, 最后是一个 <code>return</code> 语句(可有可无)用于返回值.</p>
+<p>函数的定义很简单, 接下来我们看一点抽象的东西.</p>
+<p>我们知道, 给一个变量赋值用的是 <code>=</code>, 定义一个函数用的是 <code>def</code>, 无论是 <code>=</code> 还是 <code>def</code>, 其本质都是为一个<strong>名</strong>赋予<strong>含义</strong>, 换句话说, <code>def</code> 语句本质上也是一个<strong>赋值语句</strong>.</p>
+<p>所以很多时候, 我们把函数的定义当作是对名的赋值就会好理解很多.</p>
+<h2 id="Functions-as-Arguments"><a href="#Functions-as-Arguments" class="headerlink" title="Functions as Arguments"></a>Functions as Arguments</h2><p>观察以下几个函数:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sum_naturals</span>(<span class="params">n</span>):</span><br><span class="line">  total, k = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> k &lt; n:</span><br><span class="line">    total, k = total + k, k + <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> total</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sum_cubes</span>(<span class="params">n</span>):</span><br><span class="line">  total, k = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> k &lt; n:</span><br><span class="line">    total, k = total + k * k * k, k + <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> total</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pi_sum</span>(<span class="params">n</span>):</span><br><span class="line">  total, k = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> k &lt; n:</span><br><span class="line">    total, k = total + <span class="number">8</span> / ((<span class="number">4</span> * k - <span class="number">3</span>) * (<span class="number">4</span> * k - <span class="number">1</span>)), k + <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
+
+<p>我们可以发现以上几个函数都可以写成如下格式:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> &lt;name&gt;(n):</span><br><span class="line">  total, k = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> k &lt; n:</span><br><span class="line">    total, k = total + &lt;term&gt;(k), k + <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
+
+<p>只有函数名 <code>&lt;name&gt;</code> 和参数的计算方式 <code>&lt;term&gt;</code> 不同.</p>
+<p>我们在上一章提到过, python 中不分函数名或是变量名, 而是统一称为<strong>名(name)</strong>, 既然这样, 我们在函数中传参的过程中, 也可以通过名的形式来传入一个函数, 即上面的 <code>&lt;term&gt;</code>.</p>
+<p>也就是说, 我们可以把函数作为一个参数传入函数.</p>
+<p>故函数 <code>sum_cubes</code> 的定义可以改写为如下形式:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">summation</span>(<span class="params">n, term</span>):</span><br><span class="line">  total, k = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> k &lt; n:</span><br><span class="line">    total, k = total + term(k), k + <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> total</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cube</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">return</span> x * x * x</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sum_cubes</span>(<span class="params">n</span>):</span><br><span class="line">  <span class="keyword">return</span> summation(n, cube)</span><br></pre></td></tr></table></figure>
+
+<p>只考虑计算立方和这一项功能的话, 把一个函数拆成这样三个函数来写可能有些不合适, 但是当我们把所有的可以用该格式概括的(前 n 项求和)函数都写成这样的形式, 那我们的代码复用性就大大的提高了, 这种模块化的思想是编程的哲学, 也是编程的艺术, 既提高了代码的复用性, 也提高了代码的美观程度.</p>
+<h2 id="Nested-Definitions"><a href="#Nested-Definitions" class="headerlink" title="Nested Definitions"></a>Nested Definitions</h2><p>函数的<strong>嵌套定义(Nested  Definnitions)</strong>, 其实就是在一个函数内定义函数, 在讲嵌套定义之前, 我们先回忆一下之前说过的, 把 <code>def</code> 语句理解为一个赋值语句. 理解了这个, 我们再理解函数的嵌套定义就很简单了.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">g</span>(<span class="params">x</span>):</span><br><span class="line">    ...</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码块中, 我们在函数 <code>f</code> 里定义了一个函数 <code>g</code>, 如果我们按照 C&#x2F;C++ 里的方式来理解的话, 这可能会有些奇怪, 但是当你用 python 中<strong>名</strong>的视角来看, 定义一个函数跟定义一个变量没什么两样, 在这里定义一个函数无异于定义了一个<strong>函数类型</strong>的<strong>名</strong>.</p>
+<p>所以, 函数的嵌套定义, 我们可以把它理解为在函数的作用域内定义了一个<strong>名</strong>, 只不过这个名被赋予了<strong>函数</strong>的意义.</p>
+<h2 id="Functions-as-Returned-Values"><a href="#Functions-as-Returned-Values" class="headerlink" title="Functions as Returned Values"></a>Functions as Returned Values</h2><p>前面说完了函数作为参数传入, 接下来是函数作为返回值传出.</p>
+<p>这里的函数作为返回值真的是返回了一个函数, 与函数的递归调用不同, 这里的返回一个函数, 是真的把函数作为返回值.</p>
+<p>举个例子:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compose1</span>(<span class="params">f, g</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">h</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> f(g(x))</span><br><span class="line">  <span class="keyword">return</span> h</span><br></pre></td></tr></table></figure>
+
+<p>函数 <code>compose1</code> 把两个只有一个参数的函数 <code>f(x)</code> 和 <code>g(x)</code> 合并成一个函数 <code>h(x)</code>.</p>
+<p>我们可以通过如下方式调用:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h = compose1(f, g)</span><br></pre></td></tr></table></figure>
+
+<p>是不是很简单, 其实就是返回值的类型为函数类型罢了.</p>
+<p>不知道看到这里的你有没有个疑惑:</p>
+<blockquote>
+<p>为什么不直接在 Functions as Arguments 后面讲 Functions as Returned Values</p>
+</blockquote>
+<p>其实我刚才也有这个疑惑, 甚至我一开始还是把这两部分连着的, 把嵌套定义放在后面(当然CS61A中并没有这样), 在写嵌套定义那一部分的时候我突然发现, 函数作为返回值的时候, 如果不用嵌套定义, 那么我们的函数就会长成下面这样子:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">return</span> f</span><br></pre></td></tr></table></figure>
+
+<p>我们就只能返回一个函数本身或者一个其他函数, 但是这样的功能我们本可以直接用一个 <code>=</code> 来实现, 写的这么麻烦实在很不符合一个优秀程序员的作风.</p>
+<p>为了让函数类型的返回值更有意义, 我就把这一节放在了函数的嵌套定义之后, 想必 CS61A 课程安排成这样大概也是如此吧.</p>
+<h2 id="Currying"><a href="#Currying" class="headerlink" title="Currying"></a>Currying</h2><p><strong>加里化(Currying)</strong>, 这真是个有趣的东西, 因为我一开始并不知道这是什么玩意, 于是我就翻译了一下, 翻译结果是”咖喱ing”, 我的大脑突然一片空白. 不过这个名字并不重要, 重要的是加里化这个操作.</p>
+<blockquote>
+<p>We can use higher-order functions to convert a function that takes multiple arguments into a chain of functions that each take a single argument.</p>
+</blockquote>
+<p>上面是对加里化的一个简单的解释, 把一个形似 <code>f(a, b, c...)</code> 的函数转化成形似 <code>g(a)(b)(c)...</code> 的形式, 这个操作就是加里化.</p>
+<p>举个例子:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">pow</span>(<span class="params">x, y</span>):</span><br><span class="line">  total, k = <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">  <span class="keyword">while</span> k &lt; y</span><br><span class="line">    total, k = total * x, k + <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
+
+<p>这是一个用于计算 $x^y$ 的函数, 我们对其加里化:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">curried_pow</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">h</span>(<span class="params">y</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">pow</span>(x, y)</span><br><span class="line">  <span class="keyword">return</span> h</span><br></pre></td></tr></table></figure>
+
+<p><code>curried_pow(x)(y)</code> 的结果与 <code>pow(x, y)</code> 完全相同, 除此之外,  <code>curried_pow(x)</code> 也可以作为单独的一个函数使用, 把 <code>x</code> 作为一个常量, 例如 <code>curried_pow(2)(x)</code> 就可以用于计算 $2^x$ .</p>
+<p>只是说到这里, 还不足以体现出加里化的作用和优点, 加里化的一个很重要的作用就是可以把一个多参数的函数当作一个单参数的函数来使用, 举个例子:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">map_to_range</span>(<span class="params">start, end, f</span>):</span><br><span class="line">  <span class="keyword">while</span> start &lt; end:</span><br><span class="line">    <span class="built_in">print</span>(f(start))</span><br><span class="line">    start = start + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>这个函数用于输出 $f(n), n \in [start, end)$, 显然函数 <code>f</code> 只有一个参数, 所以我们就可以通过对函数 <code>pow</code> 加里化来获取单参数函数, 并且可以以参数的形式任意修改其他参数, 也就是说, 我们只需要对 <code>pow(x, y)</code> 进行加里化, 就可以得到所有的用于计算 $a^x$ 的函数, 此处 $a$ 为常数. 我们就不需要用一个函数就定义一个, 只需要在调用或是传入 <code>curried_pow(x)</code> 时修改 <code>x</code> 的值就可以了.</p>
+<h2 id="Lambda-Expressions"><a href="#Lambda-Expressions" class="headerlink" title="Lambda Expressions"></a>Lambda Expressions</h2><p>目前来看, 我们每次需要用一个函数时, 都需要一个名, 也就是我们都是通过一个名来调用函数.</p>
+<p><strong>lambda 表达式</strong>的出现改变了这一情况. 通过 lambda 表达式, 我们可以把上面的 <code>compose1</code> 函数写成如下形式:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compose1</span>(<span class="params">f, g</span>):</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">lambda</span> x : f(g(x))</span><br></pre></td></tr></table></figure>
+
+<p>这与上面的定义是等价的. lambda 表达式的格式如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    lambda            x            :         f(g(x))</span><br><span class="line">A function that    takes x    and returns    f(g(x))</span><br></pre></td></tr></table></figure>
+
+<p>lambda 表达式的值是一个函数, 称为 lambda 函数. 有了 lambda 表达式, 我们就可以换一种方式来对函数进行定义了:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="keyword">lambda</span> x : x * x</span><br></pre></td></tr></table></figure>
+
+<p>这样就定义了一个函数 <code>f(x)</code> 用于计算 $x^2$. 通过 lambda 表达式的方式定义函数会很简短, 在某些情况下非常好用. 但需要注意的是, lambda 表达式只能用于简单的函数定义(仅包含一个表达式), 而不能含有赋值语句或控制语句. 如果过分使用 lambda 表达式也会造成代码可读性下降等问题.</p>
+<p>所以凡事都讲究一个中庸之道, 过犹不及. 对 lambda 表达式抑或是其他特性都是如此.</p>
+<h2 id="Function-Decorators"><a href="#Function-Decorators" class="headerlink" title="Function Decorators"></a>Function Decorators</h2><p><strong>函数装饰器(Function Decorators)</strong>, 正如其名, 是一个用于”装饰”函数的东西, 符号 <code>@</code> 称为<strong>装饰器(Decorator)</strong>, 我们可以通过它来调用装饰函数来对目标函数进行装饰.</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">trace</span>(<span class="params">fn</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">wrapped</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;-&gt;&#x27;</span>, fn, <span class="string">&#x27;(&#x27;</span>, x, <span class="string">&#x27;)&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> fn(x)</span><br><span class="line">  <span class="keyword">return</span> wrapped</span><br></pre></td></tr></table></figure>
+
+<p>这是一个用于追踪函数的函数, 可以输出目标函数的信息及其传入的参数, 并且没有修改其返回值. 我们通过以下方式来定义一个修饰过后的函数:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@trace</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">triple</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">return</span> <span class="number">3</span> * x</span><br></pre></td></tr></table></figure>
+
+<p>当然我们也可以先定义该函数, 再对其进行修饰:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">triple</span>(<span class="params">x</span>):</span><br><span class="line">  <span class="keyword">return</span> <span class="number">3</span> * x</span><br><span class="line"></span><br><span class="line">triple = trace(triple)</span><br></pre></td></tr></table></figure>
+
+<p>这两种方式是等价的, 只不过后者就不需要用到装饰器了.</p>
+<p>这里只是简要的介绍了函数装饰器, 就像 CS61A 中讲的那样, 并没有对其进行深入的探讨和研究, 也没有介绍其应用范围.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/articles/python-learning-chapter1/" rel="prev" title="Python Learning Chapter 1">
+                  <i class="fa fa-angle-left"></i> Python Learning Chapter 1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/articles/da-yan-he/" rel="next" title="大堰河——我的保姆">
+                  大堰河——我的保姆 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">woom</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
