@@ -27,7 +27,7 @@
 <meta property="og:description" content="Hack The Box 的 Information Gathering 章节相关的部分工具以及最后的练习题">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-04-22T17:22:34.000Z">
-<meta property="article:modified_time" content="2025-04-22T17:31:42.987Z">
+<meta property="article:modified_time" content="2025-05-07T02:22:27.570Z">
 <meta property="article:author" content="woom">
 <meta property="article:tag" content="Security">
 <meta property="article:tag" content="Hack The Box">
@@ -114,7 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">常用工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#whois"><span class="nav-number">1.1.</span> <span class="nav-text">whois</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dig"><span class="nav-number">1.2.</span> <span class="nav-text">dig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dnsenum"><span class="nav-number">1.3.</span> <span class="nav-text">dnsenum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gobuster"><span class="nav-number">1.4.</span> <span class="nav-text">gobuster</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crt-sh"><span class="nav-number">1.5.</span> <span class="nav-text">crt.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#whatweb"><span class="nav-number">1.6.</span> <span class="nav-text">whatweb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wafw00f"><span class="nav-number">1.7.</span> <span class="nav-text">wafw00f</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReconSpider"><span class="nav-number">1.8.</span> <span class="nav-text">ReconSpider</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">其他工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0"><span class="nav-number">3.</span> <span class="nav-text">练习</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">常用工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#whois"><span class="nav-number">1.1.</span> <span class="nav-text">whois</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dig"><span class="nav-number">1.2.</span> <span class="nav-text">dig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dnsenum"><span class="nav-number">1.3.</span> <span class="nav-text">dnsenum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gobuster"><span class="nav-number">1.4.</span> <span class="nav-text">gobuster</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crt-sh"><span class="nav-number">1.5.</span> <span class="nav-text">crt.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#whatweb"><span class="nav-number">1.6.</span> <span class="nav-text">whatweb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wafw00f"><span class="nav-number">1.7.</span> <span class="nav-text">wafw00f</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReconSpider"><span class="nav-number">1.8.</span> <span class="nav-text">ReconSpider</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">其他工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0"><span class="nav-number">3.</span> <span class="nav-text">练习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Task1"><span class="nav-number">3.1.</span> <span class="nav-text">Task1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Task2"><span class="nav-number">3.2.</span> <span class="nav-text">Task2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Task3"><span class="nav-number">3.3.</span> <span class="nav-text">Task3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Task4"><span class="nav-number">3.4.</span> <span class="nav-text">Task4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Task5"><span class="nav-number">3.5.</span> <span class="nav-text">Task5</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -198,9 +198,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2025-04-23 01:22:34 / Modified: 01:31:42" itemprop="dateCreated datePublished" datetime="2025-04-23T01:22:34+08:00">2025-04-23</time>
+      <time title="Created: 2025-04-23 01:22:34" itemprop="dateCreated datePublished" datetime="2025-04-23T01:22:34+08:00">2025-04-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-05-07 10:22:27" itemprop="dateModified" datetime="2025-05-07T10:22:27+08:00">2025-05-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -286,16 +292,16 @@
 <h1 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h1><p>首先给了我们 IP 地址和端口 <code>83.136.255.10:58739</code>，然后给了我们虚拟主机 <code>inlanefreight.htb</code>，我们直接添加到 <code>/etc/hosts</code> 里。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> vim /etc/hosts</span><br><span class="line"></span><br><span class="line">83.136.255.10   inlanefreight.htb <span class="comment"># 添加到文件末尾就可以</span></span><br></pre></td></tr></table></figure>
 
-<p>Q1. What is the IANA ID of the registrar of the inlanefreight.com domain?</p>
+<h2 id="Task1"><a href="#Task1" class="headerlink" title="Task1"></a>Task1</h2><p><strong>What is the IANA ID of the registrar of the inlanefreight.com domain?</strong></p>
 <p>第一问问我们 <code>inlanefreight.com</code> 的 IANA ID，我一开始没仔细看，以为是问的一开始提到的虚拟主机 <code>inlanefreight.htb</code> 然后用 <code>whois</code> 等工具搞了半天也没搞出来，后来又看了一遍题，才发现是 <code>inlanefreight.com</code> 直接 <code>whois</code> 就解决了。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ whois inlanefreight.com | grep IANA </span><br><span class="line">Registrar IANA ID: 468</span><br></pre></td></tr></table></figure>
 
-<p>Q2. What http server software is powering the inlanefreight.htb site on the target system? Respond with the name of the software, not the version, e.g., Apache.</p>
+<h2 id="Task2"><a href="#Task2" class="headerlink" title="Task2"></a>Task2</h2><p><strong>What http server software is powering the inlanefreight.htb site on the target system? Respond with the name of the software, not the version, e.g., Apache.</strong></p>
 <p>我们直接 <code>whatweb</code> 一下就行了，有很多方法可以解决这个问题。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ whatweb http://inlanefreight.htb:58739</span><br><span class="line">http://inlanefreight.htb:58739 [200 OK] Country[FINLAND][FI], HTML5, HTTPServer[nginx/1.26.1], IP[83.136.255.10], Title[inlanefreight], nginx[1.26.1]</span><br></pre></td></tr></table></figure>
 
 <p>答案是 <code>nginx</code>。</p>
-<p>Q3. What is the API key in the hidden admin directory that you have discovered on the target system?</p>
+<h2 id="Task3"><a href="#Task3" class="headerlink" title="Task3"></a>Task3</h2><p><strong>What is the API key in the hidden admin directory that you have discovered on the target system?</strong></p>
 <p>这一问卡了我超级久，问 GPT 也费劲，最后受不了了，就到处查资料，查各种论坛找 wp 解决的。</p>
 <p>题目让我们去找隐藏的 <code>admin</code> 目录里的 API key，我一开始想到了用 <code>gobuster</code>，然后我就去问 GPT 怎么说，因为题目说要找 <code>directory</code>，所以 GPT 就让我用 <code>gobuster dir</code> 扫，但是这样扫根本扫不到，让我郁闷了好久，搜了之后才知道要先扫 <code>vhost</code>，扫到一个子域之后再用 <code>dir</code> 扫文件。</p>
 <p>先扫描 <code>vhost</code>：</p>
@@ -323,7 +329,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl -i http://web1337.inlanefreight.htb:58739/admin_h1dd3n/</span><br><span class="line">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;<span class="built_in">head</span>&gt;&lt;title&gt;web1337 admin&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Welcome to web1337 admin site&lt;/h1&gt;&lt;h2&gt;The admin panel is currently under maintenance, but the API is still accessible with the key e963d863ee0e82ba7080fbf558ca0d3f&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>答案就是 <code>e963d863ee0e82ba7080fbf558ca0d3f</code>。</p>
-<p>Q4. After crawling the inlanefreight.htb domain on the target system, what is the email address you have found? Respond with the full email, e.g., <a href="mailto:&#x6d;&#97;&#x69;&#x6c;&#x40;&#105;&#x6e;&#108;&#97;&#110;&#101;&#x66;&#x72;&#x65;&#x69;&#x67;&#x68;&#x74;&#x2e;&#104;&#116;&#98;">&#x6d;&#97;&#x69;&#x6c;&#x40;&#105;&#x6e;&#108;&#97;&#110;&#101;&#x66;&#x72;&#x65;&#x69;&#x67;&#x68;&#x74;&#x2e;&#104;&#116;&#98;</a>.</p>
+<h2 id="Task4"><a href="#Task4" class="headerlink" title="Task4"></a>Task4</h2><p><strong>After crawling the inlanefreight.htb domain on the target system, what is the email address you have found? Respond with the full email, e.g., <a href="mailto:&#109;&#97;&#105;&#108;&#64;&#105;&#110;&#x6c;&#x61;&#110;&#x65;&#102;&#x72;&#x65;&#105;&#x67;&#x68;&#116;&#x2e;&#104;&#116;&#x62;">&#109;&#97;&#105;&#108;&#64;&#105;&#110;&#x6c;&#x61;&#110;&#x65;&#102;&#x72;&#x65;&#105;&#x67;&#x68;&#116;&#x2e;&#104;&#116;&#x62;</a>.</strong></p>
 <p>好的，我看到邮箱了，第一反应就是爬虫，于是我直接用 <code>ReconSpider</code> 去爬：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ python3 ReconSpider.py http://web1337.inlanefreight.htb:58739</span><br><span class="line">$ <span class="built_in">cat</span> results.json</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;emails&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;links&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;external_files&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;js_files&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;form_fields&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;images&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;videos&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;audio&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;comments&quot;</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -340,7 +346,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ python3 ReconSpider.py http://web1337.inlanefreight.htb:58739</span><br><span class="line">$ <span class="built_in">cat</span> results.json | jq <span class="string">&#x27;.emails&#x27;</span></span><br><span class="line">[</span><br><span class="line">  <span class="string">&quot;1337testing@inlanefreight.htb&quot;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
 <p>问题<del>愉快地</del>解决了。</p>
-<p>Q5. What is the API key the inlanefreight.htb developers will be changing too?</p>
+<h2 id="Task5"><a href="#Task5" class="headerlink" title="Task5"></a>Task5</h2><p><strong>What is the API key the inlanefreight.htb developers will be changing too?</strong></p>
 <p>这一问其实在上一问的时候已经顺带解决了，就在我们爬到的注释里：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> results.json | jq <span class="string">&#x27;.comments&#x27;</span></span><br><span class="line">[</span><br><span class="line">  <span class="string">&quot;&lt;!-- Remember to change the API key to ba988b835be4aa97d068941dc852ff33 --&gt;&quot;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
