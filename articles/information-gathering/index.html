@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -329,7 +329,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ curl -i http://web1337.inlanefreight.htb:58739/admin_h1dd3n/</span><br><span class="line">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;web1337 admin&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Welcome to web1337 admin site&lt;/h1&gt;&lt;h2&gt;The admin panel is currently under maintenance, but the API is still accessible with the key e963d863ee0e82ba7080fbf558ca0d3f&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>答案就是 <code>e963d863ee0e82ba7080fbf558ca0d3f</code>。</p>
-<h2 id="Task4"><a href="#Task4" class="headerlink" title="Task4"></a>Task4</h2><p><strong>After crawling the inlanefreight.htb domain on the target system, what is the email address you have found? Respond with the full email, e.g., <a href="mailto:&#109;&#x61;&#105;&#x6c;&#x40;&#x69;&#110;&#108;&#x61;&#110;&#x65;&#102;&#114;&#101;&#105;&#103;&#x68;&#116;&#46;&#x68;&#x74;&#98;">&#109;&#x61;&#105;&#x6c;&#x40;&#x69;&#110;&#108;&#x61;&#110;&#x65;&#102;&#114;&#101;&#105;&#103;&#x68;&#116;&#46;&#x68;&#x74;&#98;</a>.</strong></p>
+<h2 id="Task4"><a href="#Task4" class="headerlink" title="Task4"></a>Task4</h2><p><strong>After crawling the inlanefreight.htb domain on the target system, what is the email address you have found? Respond with the full email, e.g., <a href="mailto:&#x6d;&#x61;&#x69;&#x6c;&#64;&#105;&#110;&#108;&#97;&#110;&#101;&#x66;&#x72;&#x65;&#x69;&#x67;&#x68;&#116;&#46;&#x68;&#x74;&#98;">&#x6d;&#x61;&#x69;&#x6c;&#64;&#105;&#110;&#108;&#97;&#110;&#101;&#x66;&#x72;&#x65;&#x69;&#x67;&#x68;&#116;&#46;&#x68;&#x74;&#98;</a>.</strong></p>
 <p>好的，我看到邮箱了，第一反应就是爬虫，于是我直接用 <code>ReconSpider</code> 去爬：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ python3 ReconSpider.py http://web1337.inlanefreight.htb:58739</span><br><span class="line">$ cat results.json</span><br><span class="line">&#123;</span><br><span class="line">    &quot;emails&quot;: [],</span><br><span class="line">    &quot;links&quot;: [],</span><br><span class="line">    &quot;external_files&quot;: [],</span><br><span class="line">    &quot;js_files&quot;: [],</span><br><span class="line">    &quot;form_fields&quot;: [],</span><br><span class="line">    &quot;images&quot;: [],</span><br><span class="line">    &quot;videos&quot;: [],</span><br><span class="line">    &quot;audio&quot;: [],</span><br><span class="line">    &quot;comments&quot;: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
